@@ -67,6 +67,7 @@ node_modules/
 
 .idea
 
-generated
+functions/generated
+functions/.runtimeconfig.json
 
 .firebaserc

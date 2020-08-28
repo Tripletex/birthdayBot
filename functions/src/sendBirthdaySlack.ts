@@ -5,7 +5,7 @@ const { WebClient } = require('@slack/web-api');
 const token = process.env.SLACK_TOKEN;
 const web = new WebClient(token);
 
-module.exports = async (req: https.Request, res: express.Response): Promise<void> => {
+export default async (req: https.Request, res: express.Response): Promise<void> => {
     try {
         await web.chat.postMessage({
             channel: '#birthdaybot',
