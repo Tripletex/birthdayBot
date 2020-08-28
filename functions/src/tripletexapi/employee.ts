@@ -1,9 +1,10 @@
 import { AxiosRequestConfig } from 'axios'
 // import * as functions from 'firebase-functions';
+import { config } from 'firebase-functions'
 import { TripletexEmployee } from './types'
 import { executeTripletexRequest } from './executeTripletexRequest';
 
-const TRIPLETEX_API_URL = functions.config().tripletex.url
+export const TRIPLETEX_API_URL = config().tripletex.url
 
 
 export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmployee[]> {
