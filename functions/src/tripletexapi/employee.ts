@@ -15,14 +15,14 @@ export async function fetchEmployeeData(): Promise<TripletexEmployee[]> {
   }
 }
 
-const requestOptions: AxiosRequestConfig = {
+export const requestOptions: AxiosRequestConfig = {
   method: 'GET',
   headers: {
     'content-type': 'application/json',
   }
 }
 
-const tripletexWrapper = async (endpoint: string, config: AxiosRequestConfig | undefined) => {
+export const tripletexWrapper = async (endpoint: string, config: AxiosRequestConfig | undefined) => {
   try {
     const token: string = await createTripletexSession()
     const base64Session = Buffer.from(`0:${token}`).toString('base64')
@@ -46,7 +46,6 @@ const tripletexWrapper = async (endpoint: string, config: AxiosRequestConfig | u
   }
 }
 
-tripletexWrapper('/employee', requestOptions)
 
 
 async function createTripletexSession(): Promise<string> {
