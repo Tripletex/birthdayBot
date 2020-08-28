@@ -68,3 +68,5 @@ node_modules/
 .idea
 
 generated
+
+.firebaserc
