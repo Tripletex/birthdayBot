@@ -1,11 +1,11 @@
 import * as express from 'express';
 import { https } from 'firebase-functions';
-
-const { WebClient } = require('@slack/web-api');
-const token = process.env.SLACK_TOKEN;
-const web = new WebClient(token);
+import * as functions from 'firebase-functions';
+import { WebClient } from '@slack/web-api'
 
 export default async (req: https.Request, res: express.Response): Promise<void> => {
+    const token = functions.config().SLACK_TOKEN;
+    const web = new WebClient(token);
     try {
         await web.chat.postMessage({
             channel: '#birthdaybot',
