@@ -1,0 +1,39 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    // Required for certain syntax usages
+    "ecmaVersion": 8
+  },
+  "plugins": ["promise", "@typescript-eslint", "import"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "flowtype/require-valid-file-annotation": 0,
+    "consistent-return": 0,
+    "no-console": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description",
+        "minimumDescriptionLength": 8
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".android.js", ".ios.js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
