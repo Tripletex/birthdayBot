@@ -15,7 +15,7 @@ export const testFunction = functions.region('europe-west1').https.onRequest((re
 	//TODO test bot stuff
 });
 
-export const resetLogged = functions.region('europe-west1').pubsub.schedule('0 0 * * *').timeZone('Europe/Oslo').onRun(() => {
+export const resetLogged = functions.region('europe-west1').pubsub.schedule('7 30 * * *').timeZone('Europe/Oslo').onRun(() => {
 	//TODO DO bot stuff
 	return null;
 });
