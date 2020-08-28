@@ -1,22 +1,20 @@
-import * as express from 'express';
-import { https } from 'firebase-functions';
 import * as functions from 'firebase-functions';
 import { WebClient } from '@slack/web-api'
+import {TripletexEmployee} from "./tripletexapi/types";
 
-export default async (req: https.Request, res: express.Response): Promise<void> => {
+export default async (employees: Array<TripletexEmployee>): Promise<void> => {
     const token = functions.config().slack.token;
     const web = new WebClient(token);
     try {
-        await web.chat.postMessage({
-            channel: '#birthdaybot',
-            text: 'Test message'
-        })
-
-        res.status(200).send({ message: "Message send ok." });
+        employees.forEach((employee => {
+            web.chat.postMessage({
+                channel: '#birthdaybot',
+                text: `Gratulerer med dagen ${employee.name}`
+            })
+        }))
         return;
     } catch (error) {
         console.log("Error: ", error);
-        res.status(400).send({ message: "Error" });
         return;
     }
 }

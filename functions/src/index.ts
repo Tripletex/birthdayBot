@@ -2,15 +2,23 @@ import * as functions from 'firebase-functions';
 import * as express from 'express';
 import { https } from 'firebase-functions';
 import sendBirthdaySlack from "./sendBirthdaySlack";
+import {fetchTripletexBirthdayEmployees} from "./tripletexapi/employee";
+import {TripletexEmployee} from "./tripletexapi/types";
 
 
 export const testFunction = functions.region('europe-west1').https.onRequest((req: https.Request, res: express.Response) =>{
-	sendBirthdaySlack(req, res);
+	fetchTripletexBirthdayEmployees().then((response:Array<TripletexEmployee>) =>{
+		sendBirthdaySlack(response);
+		res.status(200).send({ message: "Message send ok." });
+	}).catch(() => {
+		res.status(500).send({ message: "Error" });
+	});
 });
 
-/*
 export const resetLogged = functions.region('europe-west1').pubsub.schedule('7 30 * * *').timeZone('Europe/Oslo').onRun(() => {
-	//TODO DO bot stuff
-	return null;
+	fetchTripletexBirthdayEmployees().then((response:Array<TripletexEmployee>) =>{
+		sendBirthdaySlack(response);
+	}).catch((e) => {
+		console.log(e)
+	});
 });
-*/
