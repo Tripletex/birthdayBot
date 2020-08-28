@@ -3,7 +3,8 @@ import { AxiosRequestConfig } from 'axios'
 import { TripletexEmployee } from './types'
 import { executeTripletexRequest } from './executeTripletexRequest';
 
-export const TRIPLETEX_API_URL = 'https://tripletex.no/v2'
+const TRIPLETEX_API_URL = functions.config().tripletex.url
+
 
 export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmployee[]> {
   try {
@@ -15,8 +16,8 @@ export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmploy
   }
 }
 
-const requestOptions: AxiosRequestConfig = {
-  method: 'GET', 
+export const requestOptions: AxiosRequestConfig = {
+  method: 'GET',
   headers: {
     'content-type': 'application/json',
   }

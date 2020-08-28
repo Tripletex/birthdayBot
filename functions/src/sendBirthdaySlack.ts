@@ -4,7 +4,7 @@ import * as functions from 'firebase-functions';
 import { WebClient } from '@slack/web-api'
 
 export default async (req: https.Request, res: express.Response): Promise<void> => {
-    const token = functions.config().SLACK_TOKEN;
+    const token = functions.config().slack.token;
     const web = new WebClient(token);
     try {
         await web.chat.postMessage({
