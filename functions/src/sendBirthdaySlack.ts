@@ -7,9 +7,10 @@ export default async (employees: Array<TripletexEmployee>): Promise<void> => {
     const web = new WebClient(token);
     try {
         employees.forEach((employee => {
+            console.log(employee);
             web.chat.postMessage({
                 channel: '#birthdaybot',
-                text: `Gratulerer med dagen ${employee.name}`
+                text: `Gratulerer med dagen *${employee.firstName} ${employee.lastName}!* :birthday::gift::tada: `
             })
         }))
         return;

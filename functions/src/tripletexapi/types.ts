@@ -1,7 +1,8 @@
 export interface TripletexEmployee {
   id: number
   dateOfBirth: string
-  name: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface BaseTripletexResponse {
