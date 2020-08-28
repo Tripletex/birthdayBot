@@ -1,0 +1,24 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "main": "generated/index.js",
+  "dependencies": {
+    "firebase-admin": "9.1.1",
+    "firebase-functions": "3.11.0"
+  },
+  "devDependencies": {
+    "typescript": "4.0.2",
+    "eslint": "6.8.0"
+  },
+  "private": true
+}
