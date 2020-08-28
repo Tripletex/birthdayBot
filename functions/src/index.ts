@@ -1,6 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as express from 'express';
 import { https } from 'firebase-functions';
+import sendBirthdaySlack from "./sendBirthdaySlack";
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -12,10 +13,10 @@ import { https } from 'firebase-functions';
 
 
 export const testFunction = functions.region('europe-west1').https.onRequest((req: https.Request, res: express.Response) =>{
-	//TODO test bot stuff
+	sendBirthdaySlack(req, res);
 });
 
-export const resetLogged = functions.region('europe-west1').pubsub.schedule('0 0 * * *').timeZone('Europe/Oslo').onRun(() => {
+export const resetLogged = functions.region('europe-west1').pubsub.schedule('7 30 * * *').timeZone('Europe/Oslo').onRun(() => {
 	//TODO DO bot stuff
 	return null;
 });
