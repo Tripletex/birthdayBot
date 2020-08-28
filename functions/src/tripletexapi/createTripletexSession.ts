@@ -1,8 +1,8 @@
 import { config } from 'firebase-functions';
 import { makeTripletexRequest } from "./makeTripletexRequest";
 export async function createTripletexSession(): Promise<string> {
-  const CONSUMER_TOKEN = config().consumertoken;
-  const EMPLOYEE_TOKEN = config().employeetoken;
+  const CONSUMER_TOKEN = config().tripletex.consumertoken;
+  const EMPLOYEE_TOKEN = config().tripletex.employeetoken;
   const expirationDate = getTokenExpirationDate();
   const response = await makeTripletexRequest(`/token/session/:create?consumerToken=${CONSUMER_TOKEN}&employeeToken=${EMPLOYEE_TOKEN}&expirationDate=${expirationDate}`, {
     'method': 'PUT'
