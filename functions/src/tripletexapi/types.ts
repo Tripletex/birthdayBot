@@ -3,6 +3,9 @@ export interface TripletexEmployee {
   dateOfBirth: string
   firstName: string;
   lastName: string;
+  department: {
+    name: string
+  }
 }
 
 export interface BaseTripletexResponse {
