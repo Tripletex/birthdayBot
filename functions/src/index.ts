@@ -15,7 +15,7 @@ export const testFunction = functions.region('europe-west3').https.onRequest((re
 	});
 });
 
-export const scheduleMorningFunctions = functions.region('europe-west3').pubsub.schedule('7 30 * * *').timeZone('Europe/Oslo').onRun(() => {
+export const scheduledMorningFunctions = functions.region('europe-west3').pubsub.schedule('30 7 * * *').timeZone('Europe/Oslo').onRun(() => {
 	fetchTripletexBirthdayEmployees().then((response:Array<TripletexEmployee>) =>{
 		sendBirthdaySlack(response);
 	}).catch((e) => {
