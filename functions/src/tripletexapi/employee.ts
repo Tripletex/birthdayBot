@@ -13,7 +13,7 @@ export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmploy
 		const employees: TripletexEmployee[] = response.data.values ?? []
 		return employeesThatHaveBirthdayToday(employees)
 	} catch (error) {
-		return []
+		throw error
 	}
 }
 

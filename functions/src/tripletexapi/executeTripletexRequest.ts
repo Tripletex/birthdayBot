@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 import { createTripletexSession } from './createTripletexSession';
 import { deleteTripletexSession } from './deleteTripletexSession';
 import { makeTripletexRequest } from './makeTripletexRequest';
+import * as functions from 'firebase-functions';
 
 export const executeTripletexRequest = async (endpoint: string, config: AxiosRequestConfig | undefined) => {
   try {
@@ -23,7 +24,7 @@ export const executeTripletexRequest = async (endpoint: string, config: AxiosReq
     return response;
   }
   catch (error) {
-    console.log('Something went very wrong!', error);
+    functions.logger.error('Something went very wrong!', error);
     return Promise.reject(error.message);
   }
 };
