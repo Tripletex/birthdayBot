@@ -12,10 +12,11 @@ export default async (employees: Array<TripletexEmployee>): Promise<void> => {
 				channel: '#tripletex_sosialt',
 				text: `Gratulerer med dagen *${employee.firstName} ${employee.lastName} (${employee.department.name})!* :birthday::gift::tada: `
 			})
-		}))
+		}));
+		functions.logger.info(`${employees.length} were congratulated`);
 		return;
 	} catch (error) {
-		functions.logger.error(error)
+		functions.logger.error(error);
 		return;
 	}
 }
