@@ -15,7 +15,7 @@ export default async (employees: Array<TripletexEmployee>): Promise<void> => {
 		}))
 		return;
 	} catch (error) {
-		console.log("Error: ", error);
+		functions.logger.error(error)
 		return;
 	}
 }

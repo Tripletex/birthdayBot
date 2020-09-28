@@ -9,7 +9,7 @@ export const TRIPLETEX_API_URL = config().tripletex.url
 
 export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmployee[]> {
 	try {
-		const response = await executeTripletexRequest('/employee?includeContacts=true&fields=firstName,lastName,dateOfBirth,department(name)', requestOptions)
+		const response = await executeTripletexRequest('/employee?fields=firstName,lastName,dateOfBirth,department(name)', requestOptions)
 		const employees: TripletexEmployee[] = response.data.values ?? []
 		return employeesThatHaveBirthdayToday(employees)
 	} catch (error) {
