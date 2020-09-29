@@ -1,15 +1,19 @@
 import { AxiosRequestConfig } from 'axios'
-// import * as functions from 'firebase-functions';
 import { config } from 'firebase-functions'
 import { TripletexEmployee } from './types'
+import * as moment from 'moment';
 import { executeTripletexRequest } from './executeTripletexRequest';
 
 export const TRIPLETEX_API_URL = config().tripletex.url
 
 
 export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmployee[]> {
+	const periodStart = '1970-01-01';
+	const periodEnd = moment().format('YYYY-MM-DD');
+	const fields = 'firstName,lastName,dateOfBirth,department(name)';
+	const url = `/employee?periodStart=${periodStart}&periodEnd=${periodEnd}&fields=${fields}`;
 	try {
-		const response = await executeTripletexRequest('/employee?fields=firstName,lastName,dateOfBirth,department(name)', requestOptions)
+		const response = await executeTripletexRequest(url, requestOptions)
 		const employees: TripletexEmployee[] = response.data.values ?? []
 		return employeesThatHaveBirthdayToday(employees)
 	} catch (error) {
