@@ -8,8 +8,8 @@ export const TRIPLETEX_API_URL = config().tripletex.url
 
 
 export async function fetchTripletexBirthdayEmployees(): Promise<TripletexEmployee[]> {
-	const periodStart = '1970-01-01';
-	const periodEnd = moment().format('YYYY-MM-DD');
+	const periodStart = moment().subtract(1, 'day').format('YYYY-MM-DD');
+	const periodEnd = moment().add(1, 'day').format('YYYY-MM-DD');
 	const fields = 'firstName,lastName,dateOfBirth,department(name)';
 	const url = `/employee?periodStart=${periodStart}&periodEnd=${periodEnd}&fields=${fields}`;
 	try {
