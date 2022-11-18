@@ -1,0 +1,14 @@
+{
+  "name": "birthday-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Tripletex/birthdayBot.git",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"TODO we should add tests\"",
+    "serve": "firebase serve --only functions,pubsub",
+    "build": "yarn --prefix functions build",
+    "start": "firebase emulators:start --only functions,pubsub",
+    "dev": "(trap 'kill 0' SIGINT; yarn --prefix functions build -- -w & firebase emulators:start --only functions,pubsub)"
+  }
+}
